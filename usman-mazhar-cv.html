@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usman Mazhar | Academic Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#fafaf8;--surface:#ffffff;--surface2:#f4f3ef;--border:#e4e2db;
+  --border-dark:#cac8c0;--accent:#1a4a8c;--accent-light:#e8eef7;
+  --accent-mid:#3567b5;--green:#1f6b3a;--green-light:#e8f4ee;
+  --text-primary:#1a1917;--text-secondary:#4a4845;--text-muted:#8a8780;
+  --tag-bg:#f0efe9;--yellow:#b8860b;
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-primary);font-family:var(--sans);font-size:15px;line-height:1.65;}
+a{color:var(--accent-mid);text-decoration:none;}
+a:hover{text-decoration:underline;text-underline-offset:3px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.nav-brand{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text-primary);letter-spacing:.02em;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-secondary);}
+.nav-links a:hover{color:var(--accent);text-decoration:none;}
+.wrapper{max-width:900px;margin:0 auto;padding:0 40px 80px;}
+.hero{display:grid;grid-template-columns:1fr 180px;gap:40px;align-items:start;padding:56px 0 48px;border-bottom:1px solid var(--border);margin-bottom:48px;}
+.hero-name{font-family:var(--serif);font-size:38px;font-weight:300;line-height:1.15;color:var(--text-primary);margin-bottom:4px;letter-spacing:-.01em;}
+.hero-title{font-size:15px;color:var(--accent-mid);font-weight:500;margin-bottom:16px;letter-spacing:.01em;}
+.hero-desc{font-size:15px;color:var(--text-secondary);line-height:1.7;max-width:560px;margin-bottom:24px;}
+.contact-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--text-muted);margin-bottom:20px;}
+.contact-item{display:flex;align-items:center;gap:5px;}
+.contact-item svg{flex-shrink:0;opacity:.6;}
+.links-row{display:flex;flex-wrap:wrap;gap:8px;}
+.btn-link{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid var(--border-dark);border-radius:4px;font-size:12px;font-weight:500;font-family:var(--mono);color:var(--text-secondary);background:var(--surface);transition:border-color .15s,color .15s,background .15s;}
+.btn-link:hover{border-color:var(--accent-mid);color:var(--accent-mid);background:var(--accent-light);text-decoration:none;}
+/*.avatar-block{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.avatar{width:148px;height:148px;border-radius:50%;background:linear-gradient(145deg,var(--accent-light) 0%,#d0dcf0 100%);border:2px solid var(--border-dark);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:44px;font-weight:300;color:var(--accent);}
+*/
+.avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;  /* key line */
+    display: block;
+}
+
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:48px;}
+.metric{background:var(--surface);padding:18px 20px;text-align:center;}
+.metric-num{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--accent);line-height:1.1;display:block;}
+.metric-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);display:block;margin-top:3px;font-family:var(--mono);}
+section{margin-bottom:52px;}
+.section-title{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.section-title::before{content:'';width:3px;height:14px;background:var(--accent-mid);border-radius:2px;display:inline-block;}
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:130px 1fr;gap:0 24px;padding:14px 0;border-bottom:1px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--text-muted);padding-top:3px;line-height:1.4;text-align:right;padding-right:24px;border-right:1px solid var(--border);}
+.tl-role{font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.3;}
+.tl-place{font-size:13px;color:var(--text-secondary);margin-top:2px;}
+.tl-badge{display:inline-block;font-size:10px;font-family:var(--mono);background:var(--accent-light);color:var(--accent);border:1px solid #c0d0e8;border-radius:3px;padding:1px 6px;margin-top:4px;}
+.pub-group-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);background:var(--surface2);padding:4px 10px;margin:16px 0 8px;border-radius:3px;display:inline-block;}
+.pub{padding:12px 0;border-bottom:1px solid var(--border);}
+.pub:last-child{border-bottom:none;}
+.pub-title{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--text-primary);line-height:1.4;margin-bottom:5px;}
+.pub-authors{font-size:13px;color:var(--text-secondary);margin-bottom:3px;}
+.pub-authors em{font-style:normal;font-weight:600;color:var(--accent-mid);}
+.pub-venue{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.venue-tag{font-family:var(--mono);font-size:10px;background:var(--surface2);border:1px solid var(--border-dark);color:var(--text-muted);padding:1px 6px;border-radius:3px;}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.skill-group h4{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.stag{font-size:12px;font-family:var(--mono);background:var(--tag-bg);border:1px solid var(--border-dark);color:var(--text-secondary);padding:3px 8px;border-radius:3px;}
+.interests{display:flex;flex-direction:column;}
+.interest{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);align-items:start;}
+.interest:last-child{border-bottom:none;}
+.interest-num{font-family:var(--mono);font-size:11px;color:var(--accent-mid);opacity:.7;padding-top:2px;}
+.interest-text{font-size:14px;color:var(--text-secondary);line-height:1.6;}
+.chip-cloud{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{font-size:12px;background:var(--surface);border:1px solid var(--border-dark);color:var(--text-secondary);padding:4px 10px;border-radius:20px;}
+.award{display:grid;grid-template-columns:24px 1fr auto;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);align-items:start;}
+.award:last-child{border-bottom:none;}
+.award-star{color:var(--yellow);font-size:16px;}
+.award-title{font-size:14px;font-weight:600;color:var(--text-primary);}
+.award-sub{font-size:12px;color:var(--text-secondary);margin-top:2px;}
+.award-year{font-family:var(--mono);font-size:11px;color:var(--text-muted);white-space:nowrap;}
+.member{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;gap:12px;}
+.member:last-child{border-bottom:none;}
+.member-since{font-family:var(--mono);font-size:10px;color:var(--green);background:var(--green-light);border:1px solid #b8ddc8;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+.courses-grid{display:flex;flex-direction:column;gap:16px;}
+.course-group h4{font-size:12px;font-family:var(--mono);font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
+.course-list{display:flex;flex-wrap:wrap;gap:6px;}
+.course-pill{font-size:13px;background:var(--surface);border:1px solid var(--border-dark);color:var(--text-secondary);padding:5px 12px;border-radius:4px;display:flex;align-items:center;gap:6px;}
+.course-pill::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent-mid);display:inline-block;flex-shrink:0;}
+footer{border-top:1px solid var(--border);padding:24px 0 0;margin-top:8px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text-muted);font-family:var(--mono);}
+@media(max-width:680px){
+  .wrapper{padding:0 20px 60px;}
+  nav{padding:0 20px;}
+  .hero{grid-template-columns:1fr;}
+  .avatar-block{display:none;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .tl-item{grid-template-columns:1fr;}
+  .tl-date{text-align:left;border-right:none;padding-right:0;font-size:10px;}
+  .skills-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">drusmanmazhar.github.io/</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#Professional Experience">Professional Experience</a></li>
+      <li><a href="#Education">Education</a></li>
+      <li><a href="#service">Service</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <header class="hero" id="about">
+    <div>
+      <h1 class="hero-name">Usman Mazhar</h1>
+      <p class="hero-title">Visiting Assistant Professor &middot; Department of Geography, University of Gujrat</p>
+      <p class="hero-desc">Geographer and climate scientist working at the intersection of remote sensing, GeoAI, and atmospheric science. My research integrates satellite observations, reanalysis datasets, and machine learning to investigate surface energy balance, aerosol radiative forcing, and land use dynamics under changing climate conditions.</p>
+      <div class="contact-row">
+        <span class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2zM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88z"/></svg>
+          usmanmazhargeo@outlook.com
+        </span>
+        <span class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0A6.5 6.5 0 0 0 1.5 8z"/></svg>
+          University of Gujrat, Pakistan
+        </span>
+      </div>
+      <div class="links-row">
+        <a class="btn-link" href="https://github.com/climatescience" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn-link" href="https://scholar.google.com/citations?user=G-IpHw4AAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a class="btn-link" href="https://www.scopus.com/authid/detail.uri?authorId=57211014114" target="_blank">Scopus</a>
+        <a class="btn-link" href="https://www.webofscience.com/wos/author/record/AAB-4511-2021" target="_blank">Web of Science</a>
+        <a class="btn-link" href="https://orcid.org/0000-0003-2238-0908" target="_blank">ORCID</a>
+      </div>
+    </div>
+    
+    <!--
+    <div class="avatar-block">
+    <div class="avatar">UM</div>
+    </div>
+-->
+    <div class="avatar-block">
+    <div class="avatar">
+        <img src="profile old.jpg" alt="Usman Mazhar" class="avatar-img">
+    </div>
+</div>
+
+  </header>
+
+  <div class="metrics" id="research">
+    <div class="metric"><span class="metric-num">500+</span><span class="metric-label">Citations</span></div>
+    <div class="metric"><span class="metric-num">12</span><span class="metric-label">h-index</span></div>
+    <div class="metric"><span class="metric-num">16</span><span class="metric-label">Publications</span></div>
+    <div class="metric"><span class="metric-num">12</span><span class="metric-label">i10-index</span></div>
+
+  </div>
+
+  <section>
+    <h2 class="section-title">Research Interests</h2>
+    <div class="interests">
+      <div class="interest"><span class="interest-num">01</span><span class="interest-text">GeoAI and machine learning for integrating remote sensing, reanalysis, and ground-based datasets in climate change monitoring.</span></div>
+      <div class="interest"><span class="interest-num">02</span><span class="interest-text">Radiative forcing effects of aerosols and greenhouse/trace gases on atmospheric parameters and climate systems.</span></div>
+      <div class="interest"><span class="interest-num">03</span><span class="interest-text">Deep learning for land cover/land use change analysis, urban heat islands, and surface temperature dynamics.</span></div>
+      <div class="interest"><span class="interest-num">04</span><span class="interest-text">Data-driven approaches to surface energy balance, atmospheric processes, and ecosystem interactions under climate change.</span></div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2 class="section-title">Publications</h2>
+
+    <div class="pub-group-label">Book Chapter</div>
+    <div class="pub">
+      <p class="pub-title">Estimation and Variations of Surface Energy Balance from Ground, Satellite and Reanalysis Data</p>
+      <p class="pub-authors"><em>Mazhar, U.</em>, and Jin, S. (2023)</p>
+      <p class="pub-venue">3S Technology Applications in Meteorology: Observations and Modelling. CRC Press. pp. 249&ndash;267 <span class="venue-tag">BOOK CHAPTER</span></p>
+    </div>
+
+    <div class="pub-group-label">Journal Articles &middot; 2024&ndash;2025</div>
+    <div class="pub">
+      <p class="pub-title">The Role of Geoinformatics in Combating Covid-19 and Surging Critical Care Capacity in Lahore</p>
+      <p class="pub-authors">Batool, S., Sarwar, F., <em>Mazhar, U.</em>, &amp; Kazmi, J. H. (2025)</p>
+      <p class="pub-venue">Spatial Information Research, 33(4), 1&ndash;17 <span class="venue-tag">2025</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Inadequate Governance of Urban Ecosystems in Lahore, Pakistan: Insights from Changes in Land Use</p>
+      <p class="pub-authors">Khalid, A., Anwar, M., &amp; <em>Mazhar, U.</em> (2025)</p>
+      <p class="pub-venue">Urban Science, 9(5), 162 <span class="venue-tag">2025</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Assessment of Pollution Vulnerability in Groundwater: A Case Study of Kala Shah Kaku Industrial Complex</p>
+      <p class="pub-authors">Anwar, M., <em>Mazhar, U.</em> (2024)</p>
+      <p class="pub-venue">Water Practice and Technology. wpt2024202 <span class="venue-tag">2024</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Evaluation of SMAP and CYGNSS Soil Moistures in Drought Prediction Using MLR and GLDAS Product</p>
+      <p class="pub-authors">Komi, E., Jin, S., Calabia, A., Molina, I., <em>Mazhar, U.</em> (2024)</p>
+      <p class="pub-venue">Photogrammetric Engineering &amp; Remote Sensing, 90(5), 303&ndash;312 <span class="venue-tag">2024</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Monitoring the Drought in Southern Africa from Space-borne GNSS-R and SMAP Data</p>
+      <p class="pub-authors">Komi, E., Jin, S., <em>Mazhar, U.</em>, Molina, I., Calabia, A., Ullah, A. (2024)</p>
+      <p class="pub-venue">Natural Hazards, 1&ndash;17 <span class="venue-tag">2024</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Spatial Distribution and Health Risk Assessment of Groundwater Pollution in Kotlakhpat Industrial Complex, Lahore</p>
+      <p class="pub-authors">Anwar, M., Shirazi, S. A., <em>Mazhar, U.</em> (2024)</p>
+      <p class="pub-venue">Water, Air and Soil Pollution, 235, 157 <span class="venue-tag">2024</span></p>
+    </div>
+
+    <div class="pub-group-label">Journal Articles &middot; 2019&ndash;2022</div>
+    <div class="pub">
+      <p class="pub-title">AEROsol Generic Classification using a Novel Satellite Remote Sensing Approach (AEROSA)</p>
+      <p class="pub-authors">Bilal, M., Ali, A., Nichol, J. E., Bleiweiss, M. P., de Leeuw, G., Mhawish, A., <em>Mazhar, U.</em>, et al. (2022)</p>
+      <p class="pub-venue">Frontiers in Environmental Science <span class="venue-tag">2022</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Long-time Variation and Mechanism of Surface Energy Budget over Diverse Geographical Regions in Pakistan</p>
+      <p class="pub-authors"><em>Mazhar, U.</em>, Jin, S., Hu, T., Bilal, M., Ali, M. A., &amp; Atique, L. (2022)</p>
+      <p class="pub-venue">IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 15(1), 1&ndash;13 <span class="venue-tag">IEEE JSTARS &middot; 2022</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Evaluation and Comparison of CMIP6 Models and MERRA-2 Reanalysis AOD against Satellite Observations over China</p>
+      <p class="pub-authors">Ali, M. A., Bilal, M., Wang, Y., Nichol, J. E., de Leeuw, G., <em>Mazhar, U.</em>, et al. (2022)</p>
+      <p class="pub-venue">Geoscience Frontiers, 13(2), 101325 <span class="venue-tag">2022</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Integration of Surface Reflectance and Aerosol Retrieval Algorithms for Multi-Resolution AOD Retrievals over Urban Areas</p>
+      <p class="pub-authors">Bilal, M., Mhawish, A., Ali, M. A., Nichol, J. E., de Leeuw, G., <em>Mazhar, U.</em>, et al. (2022)</p>
+      <p class="pub-venue">Remote Sensing, 14(2), 1&ndash;14 <span class="venue-tag">2022</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Reduction of Surface Radiative Forcing Observed from Remote Sensing Data During Global COVID-19 Lockdown</p>
+      <p class="pub-authors"><em>Mazhar, U.</em>, Jin, S., Bilal, M., Arfan Ali, M., &amp; Khan, R. (2021)</p>
+      <p class="pub-venue">Atmospheric Research, 261, 105729 <span class="venue-tag">2021</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Air Pollution Scenario over Pakistan: Characterization and Ranking of Extremely Polluted Cities</p>
+      <p class="pub-authors">Bilal, M., Mhawish, A., Nichol, J. E., Qiu, Z., <em>Mazhar, U.</em>, et al. (2021)</p>
+      <p class="pub-venue">Remote Sensing of Environment, 264, 112617 <span class="venue-tag">2021</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Spatiotemporal Investigations of Multi-Sensor Air Pollution Data over Bangladesh during COVID-19 Lockdown</p>
+      <p class="pub-authors">Qiu, Z., Ali, M. A., Nichol, J. E., Bilal, M., <em>Mazhar, U.</em>, et al. (2021)</p>
+      <p class="pub-venue">Remote Sensing, 13(5) <span class="venue-tag">2021</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Spatio-temporal Trends of Surface Energy Budget in Tibet from Satellite Remote Sensing and Reanalysis Data</p>
+      <p class="pub-authors"><em>Mazhar, U.</em>, Jin, S., Duan, W., Bilal, M., Ali, M. A., &amp; Farooq, H. (2021)</p>
+      <p class="pub-venue">Remote Sensing, 13(2), 1&ndash;20 <span class="venue-tag">2021</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Classification of Aerosols over Saudi Arabia from 2004&ndash;2016</p>
+      <p class="pub-authors">Ali, M. A., Nichol, J. E., Bilal, M., Qiu, Z., <em>Mazhar, U.</em>, et al. (2020)</p>
+      <p class="pub-venue">Atmospheric Environment, 241, 117785 <span class="venue-tag">2020</span></p>
+    </div>
+    <div class="pub">
+      <p class="pub-title">Characteristics of Fine Particulate Matter (PM2.5) over Urban, Suburban, and Rural Areas of Hong Kong</p>
+      <p class="pub-authors">Bilal, M., Nichol, J. E., Nazeer, M., Shi, Y., <em>Mazhar, U.</em>, et al. (2019)</p>
+      <p class="pub-venue">Atmosphere, 10(9) <span class="venue-tag">2019</span></p>
+    </div>
+
+    <div class="pub-group-label">Conference Proceedings</div>
+    <div class="pub">
+      <p class="pub-title">Land Surface Temperature Variability over Various Land Covers in Punjab (Pakistan) from MODIS Data</p>
+      <p class="pub-authors"><em>Mazhar, U.</em>, Jin, S., &amp; Bilal, M. (2021)</p>
+      <p class="pub-venue">28th International Conference on Geoinformatics, 1&ndash;5 <span class="venue-tag">CONF &middot; 2021</span></p>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <h2 class="section-title">Teaching</h2>
+    <div class="courses-grid">
+      <div class="course-group">
+        <h4>Graduate &middot; PhD</h4>
+        <div class="course-list"><span class="course-pill">Advanced Techniques in Remote Sensing and GIS</span></div>
+      </div>
+      <div class="course-group">
+        <h4>Undergraduate &mdash; <a href="https://github.com/climatescience/Undergraduate-Courses" target="_blank" style="font-weight:400;font-size:11px;font-family:var(--mono);">github.com/climatescience/Undergraduate-Courses</a></h4>
+        <div class="course-list">
+          <span class="course-pill">Advanced Spatial Analysis</span>
+          <span class="course-pill">Web GIS</span>
+          <span class="course-pill">Introduction to Photogrammetry</span>
+          <span class="course-pill">Quantitative Techniques in Geography</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <section id="Professional Experience"></section>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-date">Feb 2026 &ndash; Present</div><div><div class="tl-role">Visiting Assistant Professor</div><div class="tl-place">Department of Geography &middot; University of Gujrat, Pakistan</div></div></div>
+      <div class="tl-item"><div class="tl-date">Mar 2023 &ndash; Feb 2026</div><div><div class="tl-role">Visiting Assistant Professor</div><div class="tl-place">Institute of Geography &middot; University of the Punjab, Lahore</div></div></div>
+      <div class="tl-item"><div class="tl-date">Nov 2022 &ndash; Oct 2023</div><div><div class="tl-role">Postdoctoral Fellow</div><div class="tl-place">Institute of Geography &middot; University of the Punjab, Lahore</div></div></div>
+      <div class="tl-item"><div class="tl-date">Sept 2017 &ndash; Jun 2018</div><div><div class="tl-role">Lecturer</div><div class="tl-place">Department of Information Technology &middot; University of Gujrat</div></div></div>
+      <div class="tl-item"><div class="tl-date">Sep 2014 &ndash; Aug 2017</div><div><div class="tl-role">Lecturer</div><div class="tl-place">ILM Group of Colleges &middot; Jalalpur Jattan, Gujrat</div></div></div>
+      <div class="tl-item"><div class="tl-date">Jun 2013 &ndash; May 2014</div><div><div class="tl-role">Jr. GIS Professional</div><div class="tl-place">The Urban Unit &middot; Lahore, Pakistan</div></div></div>
+      <div class="tl-item"><div class="tl-date">Sep 2009 &ndash; Aug 2011</div><div><div class="tl-role">College Teacher Internee</div><div class="tl-place">Govt. Inter College Karianwala &middot; Gujrat</div></div></div>
+      <div class="tl-item"><div class="tl-date">Sep 2008 &ndash; Aug 2009</div><div><div class="tl-role">Teaching Assistant</div><div class="tl-place">Govt. A.H. College Jalalpur Jattan &middot; Gujrat</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <section id="Education"></section>
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-date">2022</div><div><div class="tl-role">PhD &middot; 3S Integration and Meteorological Applications</div><div class="tl-place">School of Remote Sensing and Geomatics Engineering<br>Nanjing University of Information Science and Technology, China</div><span class="tl-badge">Chinese Government Scholarship (CSC)</span></div></div>
+      <div class="tl-item"><div class="tl-date">2013</div><div><div class="tl-role">M.S. &middot; Remote Sensing and GIS</div><div class="tl-place">Department of Meteorology &middot; COMSATS University Islamabad</div><span class="tl-badge">Bronze Medal</span></div></div>
+      <div class="tl-item"><div class="tl-date">2008</div><div><div class="tl-role">B.S. &middot; Space Science</div><div class="tl-place">Department of Space Science &middot; University of the Punjab, Lahore</div><span class="tl-badge">Merit Scholarship</span></div></div>
+      <div class="tl-item"><div class="tl-date">2016</div><div><div class="tl-role">Bachelor in Education (B.Ed) <span style="font-weight:300;">&middot; Distance Learning</span></div><div class="tl-place">University of Sargodha, Pakistan</div></div></div>
+      <div class="tl-item"><div class="tl-date">2011</div><div><div class="tl-role">Masters in Information Technology (MIT) <span style="font-weight:300;">&middot; Distance Learning</span></div><div class="tl-place">Virtual University of Pakistan</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group"><h4>Programming</h4><div class="skill-tags"><span class="stag">Python</span><span class="stag">R</span><span class="stag">IDL</span><span class="stag">Google Earth Engine</span></div></div>
+      <div class="skill-group"><h4>GIS &amp; Remote Sensing</h4><div class="skill-tags"><span class="stag">ArcGIS</span><span class="stag">QGIS</span><span class="stag">ERDAS Imagine</span><span class="stag">ENVI</span></div></div>
+      <div class="skill-group"><h4>Research</h4><div class="skill-tags"><span class="stag">GeoAI</span><span class="stag">Deep Learning</span><span class="stag">Machine Learning</span><span class="stag">Academic Writing</span></div></div>
+    </div>
+  </section>
+
+  <section id="service">
+    <h2 class="section-title">Editorial &amp; Peer Review Service</h2>
+    <div class="timeline" style="margin-bottom:20px;">
+      <div class="tl-item"><div class="tl-date">Guest Editor</div><div><div class="tl-role" style="font-weight:500;font-size:13px;">Surface Energy Flux Dynamics: Estimations, Impact, and Climate Interactions</div><div class="tl-place">Special Issue &middot; Frontiers in Remote Sensing</div></div></div>
+      <div class="tl-item"><div class="tl-date">Guest Editor</div><div><div class="tl-role" style="font-weight:500;font-size:13px;">Radiative Forcing of Various Atmospheric Components</div><div class="tl-place">Special Issue &middot; Atmosphere, MDPI</div></div></div>
+      <div class="tl-item"><div class="tl-date">Reviewer Board</div><div><div class="tl-role" style="font-weight:500;font-size:13px;">Member, Reviewer Board</div><div class="tl-place">American Journal of Remote Sensing</div></div></div>
+    </div>
+    <p style="font-size:12px;font-family:var(--mono);color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;">Ad-hoc Reviewer</p>
+    <div class="chip-cloud">
+      <span class="chip">Remote Sensing</span><span class="chip">Atmosphere</span><span class="chip">Applied Sciences</span><span class="chip">Sustainability</span>
+      <span class="chip">J. Marine Science &amp; Engineering</span><span class="chip">Heliyon-Environment</span><span class="chip">Int. J. Digital Earth</span>
+      <span class="chip">Int. J. Plant Biology</span><span class="chip">Frontiers in Environmental Sciences</span><span class="chip">Agronomy</span>
+      <span class="chip">J. Atm. &amp; Solar-Terrestrial Physics</span><span class="chip">Int. J. Remote Sensing</span>
+      <span class="chip">Sensors and Climate</span><span class="chip">IEEE JSTARS</span>
+      <span class="chip">Remote Sensing Applications: Society &amp; Environment</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Awards &amp; Honours</h2>
+    <div class="award"><span class="award-star">&#9733;</span><div><div class="award-title">Chinese Government Scholarship for PhD Studies</div><div class="award-sub">Chinese Scholarship Council (CSC), China</div></div><div class="award-year">2018&ndash;2022</div></div>
+    <div class="award"><span class="award-star">&#9733;</span><div><div class="award-title">Bronze Medal in Master of Science</div><div class="award-sub">Department of Meteorology &middot; COMSATS University Islamabad</div></div><div class="award-year">2013</div></div>
+    <div class="award"><span class="award-star">&#9733;</span><div><div class="award-title">Merit Scholarship in Bachelor of Science</div><div class="award-sub">Department of Space Science &middot; University of the Punjab</div></div><div class="award-year">2004&ndash;2008</div></div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Professional Memberships</h2>
+    <div class="member"><span class="member-name">Chinese Professionals in Geographic Information Sciences</span><span class="member-since">2024 &ndash; present</span></div>
+    <div class="member"><span class="member-name">American Geophysical Union (AGU)</span><span class="member-since">2024 &ndash; present</span></div>
+    <div class="member"><span class="member-name">Institute of Electrical and Electronics Engineers (IEEE)</span><span class="member-since">2024 &ndash; present</span></div>
+    <div class="member"><span class="member-name">IEEE Geoscience and Remote Sensing Society (GRSS)</span><span class="member-since">2024 &ndash; present</span></div>
+    <div class="member"><span class="member-name">International Society for Photogrammetry and Remote Sensing (ISPRS)</span><span class="member-since">2024 &ndash; present</span></div>
+    <div class="member"><span class="member-name">European Geosciences Union (EGU)</span><span class="member-since">2025 &ndash; present</span></div>
+  </section>
+
+  <footer>
+    <span>Usman Mazhar &middot; June 2026</span>
+    <a href="https://github.com/climatescience" target="_blank" style="color:var(--text-muted);">github.com/climatescience</a>
+  </footer>
+
+</div>
+</body>
+</html>
